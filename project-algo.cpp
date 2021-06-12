@@ -1,10 +1,10 @@
 #include <iostream>
 #include <array>
-#include <windows.h>
 #include <fstream>
 #include <iomanip>
 #include <limits>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
