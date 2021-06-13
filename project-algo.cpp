@@ -1,10 +1,10 @@
 #include <iostream>
 #include <array>
+#include <windows.h>
 #include <fstream>
 #include <iomanip>
 #include <limits>
 #include <string>
-#include <windows.h>
 
 using namespace std;
 
@@ -70,6 +70,11 @@ int main(){
 				break;
 			case 6 :
 				exit(1);
+			default :
+				cout << "Periksa kembali pilihan yang anda masukkan!" << endl;
+				cout << "y = Kembali ke Menu Awal \nn = Keluar dari Aplikasi" << endl << endl;
+				cout << "Masukkan Pilihan : "; cin >> opsi;
+				break;
 		}
 	}while(opsi == 'y' || opsi == 'Y');
 
@@ -128,36 +133,72 @@ void input(){
 void tampilkan(){
 	ifstream file;
 	string nama_file, nama, judul, id;
+	string tipe = ".txt";
 	int no;
 
 	cout << "==================="<< endl;
 	cout << "DATA PEMINJAMAN DVD"<< endl;
 	cout << "==================="<< endl << endl;
 	cout << "Nama File\t: "; cin >> nama_file;
+	nama_file+=tipe;
 	cout << endl;
 
 	cout << "========================================================================================"<< endl;
-	cout << "Nama" << setw(15) << "Nomor KTP" << setw(15) << "Judul DVD" << setw(12) << "Id DVD" << endl;
+	cout << "Nama" << setw(30) << "Nomor KTP" << setw(20) << "Judul DVD" << setw(18) << "Id DVD" << endl;
 	cout << "========================================================================================"<< endl;
 	
 	file.open(nama_file);
-	while(!file.eof()){
+	while(getline(file,nama)){
 		file.clear();
-		getline(file,nama);
-		cout << nama << setw(19);
 		file >> no;
-		cout << no << setw(15);
 		file.ignore(numeric_limits<streamsize>::max(),'\n'); 
 		getline(file,judul);
-		cout << judul << setw(12);
 		file >> id;
-		cout << id << endl;
+		file.ignore(numeric_limits<streamsize>::max(),'\n');
+		cout << nama << setw(19) << no << setw(25) << judul << setw(12) << id << endl;
 	}
 	cout << "========================================================================================"<< endl;
 }
 
 void searching(){
-	cout << "belum gayn hehe" << endl;
+	/*int pilihan;
+	string nama_file;
+
+	cout << "==================" << endl;
+	cout << "PENCARIAN DATA DVD" << endl;
+	cout << "==================" << endl << endl;
+
+	cout << "Nama file : "; cin >> nama_file;
+
+	cout << "==================" << endl;
+	cout << "PILIHAN : " << endl;
+	cout << "\t1.Sequential Search" << endl;
+	cout << "\t2.Binary Search" << endl;
+	cout << "==================" << endl << endl;
+
+	cout << "Masukkan Pilihan : "; cin >> pilihan;
+
+	do{
+		switch(pilihan){
+			case 1 : 
+				
+				cout << "y = Kembali ke Menu Awal \nn = Keluar dari Aplikasi" << endl << endl;
+				cout << "Masukkan Pilihan : "; cin >> pilihan;
+				break;
+			case 2 :
+				bin();
+				cout << "y = Kembali ke Menu Awal \nn = Keluar dari Aplikasi" << endl << endl;
+				cout << "Masukkan Pilihan : "; cin >> pilihan;
+				break;
+			default :
+				cout << "Pilihan yang Anda Masukkan Salah!!" << endl;
+				cout << "y = Kembali ke Menu Awal \nn = Keluar dari Aplikasi" << endl << endl;
+				cout << "Masukkan Pilihan : "; cin >> pilihan;
+				break;
+		}
+	}while(pilihan == 'y' || pilihan == 'Y');*/
+	cout << "belum jadi";
+
 }
 
 void sorting(){
